@@ -4,10 +4,10 @@ summary: A globe my dad brought home, blank maps in school, and a very competiti
 type: story
 tags: [home-and-elsewhere]
 image:
-  src: /img/sandy-salamanca.jpeg
-  alt: Sandy smiling beside the river in Salamanca, with the cathedral in the background
-  width: 1152
-  height: 2048
+  src: /img/sandy-plaza-mayor.jpg
+  alt: Sandy smiling at an outdoor table in Salamanca's Plaza Mayor, with fries, a burger, and a glass of white wine
+  width: 660
+  height: 660
 source: Adapted from an earlier journal.
 draft: false
 order: 2

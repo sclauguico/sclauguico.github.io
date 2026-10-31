@@ -47,7 +47,7 @@
 .personal-shell .personal-note-bottom a { margin-left: auto; text-decoration: underline; text-underline-offset: 4px; }
 .personal-shell .personal-note-photo { display: block; overflow: hidden; }
 .personal-shell .personal-note-photo img { display: block; width: 100%; height: 230px; object-fit: cover; object-position: 50% 68%; }
-.personal-shell .personal-note-photo img[src$="sandy-salamanca.jpeg"] { height: auto; aspect-ratio: 1; object-position: 65% 35%; }
+.personal-shell .personal-note-photo img[src$="sandy-plaza-mayor.jpg"] { height: auto; aspect-ratio: 1; object-position: 50% 50%; }
 .personal-shell .personal-note--note { background: #e4e8d8; margin-top: 28px; }
 :root.dark .personal-shell .personal-note--note { background: rgb(var(--sage)); }
 .personal-shell .personal-note--note h3 { font-family: Caveat, cursive; font-size: 34px; }
@@ -90,7 +90,7 @@
 .personal-shell .personal-reading blockquote { border-left: 2px solid rgb(var(--rose)); padding-left: 24px; margin-bottom: 28px; font: italic 25px/1.6 Georgia, serif; }
 .personal-shell .personal-story-image { max-width: 330px; margin: 0 auto 36px; }
 .personal-shell .personal-story-image img { width: 100%; height: auto; border: 10px solid rgb(var(--sage)); }
-.personal-shell .personal-story-image img[src$="sandy-salamanca.jpeg"] { aspect-ratio: 1; object-fit: cover; object-position: 65% 35%; }
+.personal-shell .personal-story-image img[src$="sandy-plaza-mayor.jpg"] { aspect-ratio: 1; object-fit: cover; object-position: 50% 50%; }
 .personal-shell .personal-source { margin-top: 36px; padding-top: 16px; border-top: 1px solid rgb(var(--border)); font-size: 12px; line-height: 1.8; color: rgb(var(--muted)); }
 .personal-shell .personal-story-end { max-width: 650px; margin: 40px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
 .personal-shell .personal-story-topics { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 22px; }

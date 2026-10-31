@@ -8,27 +8,51 @@
   aria-label="Analytics consent"
 >
   <div class="rounded-[3px] border border-border bg-surface shadow-2xl p-4">
-    <p class="text-[12.5px] leading-[1.75] text-ink">
-      This site uses privacy-friendly analytics to understand what visitors find useful.
-      No tracking cookies are set unless you opt in.
-    </p>
-    <p class="mt-2 text-[11.5px] text-muted">
-      <a
-        href="/privacy#analytics"
-        class="font-medium text-ink underline decoration-ink/40 underline-offset-2 hover:decoration-ink transition"
-      >What gets collected</a>
-    </p>
-    <div class="mt-3 flex flex-col items-stretch gap-2">
+    <div class="flex items-start gap-3">
+      {/* Deerstalker over a magnifying glass: the detective, not any one adaptation. */}
+      <svg
+        class="h-9 w-9 shrink-0 text-accent"
+        viewBox="0 0 32 32"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M8.5 11.5c0-4.2 2.6-7 5.5-7s5.5 2.8 5.5 7" />
+        <path d="M4.5 12.5c3-1 6-1.5 9.5-1.5s6.5.5 9.5 1.5" />
+        <path d="M14 4.5V3M11.5 6.5l5 3" />
+        <circle cx="14" cy="20" r="5.5" />
+        <path d="M18 24l6.5 6" />
+      </svg>
+      <div>
+        <p class="text-[13px] font-medium text-ink">Elementary, my dear visitor.</p>
+        <p class="mt-1.5 text-[12.5px] leading-[1.7] text-muted">
+          I'd like to deduce which pages people find useful, using Google
+          Analytics. Nothing is tracked unless you say yes, and no detective
+          work on you personally.
+        </p>
+        <p class="mt-2 text-[11.5px] text-muted">
+          <a
+            href="/privacy#analytics"
+            class="font-medium text-ink underline decoration-ink/40 underline-offset-2 hover:decoration-ink transition"
+          >See the evidence: what gets collected</a>
+        </p>
+      </div>
+    </div>
+    {/* Equal weight on both choices: declining must be as easy as allowing. */}
+    <div class="mt-4 grid grid-cols-2 gap-2">
       <button
         type="button"
-        class="btn-primary w-full justify-center"
+        class="h-9 px-3 rounded-[3px] border border-border text-[12.5px] text-ink hover:border-accent/50 hover:text-accent transition"
+        data-consent-decline
+      >No thanks</button>
+      <button
+        type="button"
+        class="h-9 px-3 rounded-[3px] border border-border text-[12.5px] text-ink hover:border-accent/50 hover:text-accent transition"
         data-consent-allow
       >Allow</button>
-      <button
-        type="button"
-        class="w-full h-9 px-3 rounded-[3px] border border-border text-[12.5px] text-ink hover:border-accent/50 hover:text-accent transition"
-        data-consent-decline
-      >Decline</button>
     </div>
   </div>
 </div>

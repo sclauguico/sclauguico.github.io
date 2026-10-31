@@ -1,13 +1,12 @@
 ---
 import SectionHeader from './SectionHeader.astro';
-import Scribble from './Scribble.astro';
 ---
 
 <section id="about" class="relative">
   <SectionHeader
     index="05"
     label="About"
-    title="Engineer first, business translator always."
+    title="An engineer. A teacher. Still a student."
     kicker="Background."
     space="loose"
   />
@@ -16,44 +15,32 @@ import Scribble from './Scribble.astro';
     <div class="grid grid-cols-12 gap-x-0 md:gap-x-8 gap-y-14">
       <div class="col-span-12 md:col-span-7 md:col-start-2 fade-up">
         <div>
-          <p class="justified text-[16px] leading-[1.75] text-ink">
-            Licensed Electronics Engineer who wandered into Data &amp; AI,
-            and stayed. 8+ years across academia, R&amp;D, and industry.
-            Most recently leading data engineering and data science teams
-            before going independent in late 2023.
+          <p class="text-[15px] leading-[1.85] text-ink">
+            I'm a licensed Electronics Engineer who ended up in data and AI. Over
+            the past 8+ years, I've done computer vision and robotics research,
+            taught at De La Salle University, and built data systems for companies.
           </p>
-          <p
-            class="justified mt-5 text-[14.5px] leading-[1.8] text-muted"
-          >
-            Contract work has spanned AI &amp; ML engineering for AU
-            software consulting, data engineering for a UK Airbnb revenue
-            firm, and marketing analytics for US clients across airline,
-            eCommerce, on-demand delivery, and investment management.
-            Across the stack: production data engineering (dbt, Airflow,
-            Snowflake, Databricks, DuckDB), applied AI (agents, RAG,
-            evaluation, LangChain / LangGraph), and research in computer
-            vision and robotics (IEEE-published).
+          <p class="mt-5 text-[15px] leading-[1.85] text-muted">
+            Before going independent in late 2023, I led the data engineering and
+            data science teams at a tech company in the Philippines. Since then, I've worked with
+            clients abroad, mostly on data pipelines, AI applications, and getting
+            their tools to work together.
           </p>
-          <p
-            class="justified mt-5 text-[14.5px] leading-[1.8] text-muted"
-          >
-            I care about systems that survive contact with real data, real
-            users, and real deadlines. Explainable on a napkin, debuggable
-            at 2&nbsp;a.m.
+          <p class="mt-5 text-[15px] leading-[1.85] text-muted">
+            I like building things that keep working after the demo. If I can't
+            explain how something works, or fix it when it breaks, I don't think
+            it's done.
           </p>
-          <p
-            class="justified mt-5 text-[14.5px] leading-[1.8] text-muted"
-          >
-            Outside client work, I write on Medium, guest in YouTube tutorial
-            channels about data careers, and publish free Notion roadmaps
-            for people trying to find their way in, because the path I took
-            was poorly documented, and I'd like that to be less true for
-            everyone else.
+          <p class="mt-5 text-[15px] leading-[1.85] text-muted">
+            Outside client work, I write about what I'm learning and make free
+            roadmaps for people getting into data. I had to piece a lot of it
+            together on my own when I started, so I try to make it a bit easier
+            for whoever comes next.
           </p>
         </div>
       </div>
 
-      <div class="col-span-12 md:col-span-3 md:col-start-10 fade-up" style="--stagger: 1;">
+      <div class="col-span-12 md:col-span-4 md:col-start-9 fade-up" style="--stagger: 1;">
         <div>
           <p class="mono-label">Timeline</p>
           <ul
@@ -61,11 +48,11 @@ import Scribble from './Scribble.astro';
           >
             <li class="py-5">
               <span class="block mono-label mb-1.5">NOW</span>
-              <span class="text-ink">Freelance Data &amp; AI/ML Engineer, Manila.</span>
+              <span class="text-ink">Freelance Data &amp; AI/ML Engineer, Salamanca, Spain.</span>
             </li>
             <li class="py-5">
-              <span class="block mono-label mb-1.5">CLIENTS</span>
-              <span class="text-ink">AU, UK, US, CA firms across software, real estate, marketing, eCom.</span>
+              <span class="block mono-label mb-1.5">CLIENTS, 2023–</span>
+              <span class="text-ink">Over the years, firms in AU, UK, US &amp; CA across software, real estate, marketing, and eCom.</span>
             </li>
             <li class="py-5">
               <span class="block mono-label mb-1.5">LED</span>
@@ -77,14 +64,11 @@ import Scribble from './Scribble.astro';
             </li>
             <li class="py-5">
               <span class="block mono-label mb-1.5">NEXT</span>
-              <span class="text-ink">Help you scale your business with data &amp; AI solutions.</span>
+              <span class="text-ink">Keep building useful things, and keep learning new ones.</span>
             </li>
           </ul>
         </div>
 
-        <Scribble class="mt-12" note="until it stops moving" tilt={2}>
-          θ ≔ θ − α∇J(θ)
-        </Scribble>
 
         <div class="mt-12">
           <p class="mono-label">Free resources</p>

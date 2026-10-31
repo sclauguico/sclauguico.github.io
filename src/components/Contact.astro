@@ -2,7 +2,6 @@
 import SectionHeader from './SectionHeader.astro';
 import AiTwinChat from './AiTwinChat.astro';
 import EmailButton from './EmailButton.astro';
-import Scribble from './Scribble.astro';
 import { CONTACT_EMAIL } from '@/data/site';
 ---
 
@@ -10,8 +9,8 @@ import { CONTACT_EMAIL } from '@/data/site';
   <SectionHeader
     index="06"
     label="Contact"
-    title="Let's build something real."
-    kicker="Inbox is open."
+    title="Say hello."
+    kicker="Always happy to chat."
     space="normal"
   />
 
@@ -20,9 +19,15 @@ import { CONTACT_EMAIL } from '@/data/site';
       <div class="col-span-12 md:col-span-6 md:col-start-2 fade-up">
         <div>
           <p class="text-[16px] leading-[1.7] text-muted">
-            If you've got manual processes you want automated or hard data
-            or AI problems, send it over. I reply within a couple of days,
-            usually sooner.
+            Questions about a project, a talk, or getting into data? I'm always
+              happy to hear from people.
+          </p>
+          <p class="mt-5 text-[16px] leading-[1.7] text-muted">
+            Most of my work is in data pipelines, AI applications, and workflow
+              integrations.
+          </p>
+          <p class="mt-5 text-[16px] leading-[1.7] text-muted">
+            Based in Salamanca, Spain.
           </p>
 
           <div class="mt-7 flex flex-wrap sm:flex-nowrap items-center gap-3">
@@ -49,7 +54,7 @@ import { CONTACT_EMAIL } from '@/data/site';
                 <path d="M8 2v4"></path>
                 <path d="M3 10h18"></path>
               </svg>
-              <span>Book a call</span>
+              <span>Schedule a chat</span>
             </a>
           </div>
 
@@ -111,9 +116,6 @@ import { CONTACT_EMAIL } from '@/data/site';
       </div>
 
       <aside class="col-span-12 md:col-span-4 md:col-start-9 fade-up" style="--stagger: 1;">
-        <Scribble class="mb-8" note="inverse kinematics, IEEE" tilt={-1.5}>
-          cos θ<sub>2</sub> = (x<sup>2</sup> + y<sup>2</sup> − l<sub>1</sub><sup>2</sup> − l<sub>2</sub><sup>2</sup>) / 2l<sub>1</sub>l<sub>2</sub>
-        </Scribble>
         <AiTwinChat />
       </aside>
     </div>

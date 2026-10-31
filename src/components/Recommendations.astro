@@ -1,0 +1,55 @@
+---
+// Verbatim excerpts from the LinkedIn recommendations supplied by Sandy.
+const recommendations = [
+  {
+    name: 'Stephen Mackley',
+    context: 'Worked together on the Mentor Collective account',
+    date: 'October 24, 2022',
+    datetime: '2022-10-24',
+    quote: "I came to rely upon Sandy's analyses for our operational decisions and program assessments. Sandy was always timely in her work, but also not afraid to ask if the requested methodology or assessment question would produce the insights I was looking for.",
+  },
+  {
+    name: 'Athena Rosz Ann Pascua',
+    context: 'Reported directly to Sandy at Boldr',
+    date: 'November 24, 2022',
+    datetime: '2022-11-24',
+    quote: 'You can always count on her to work with you side by side and walk you through the hard parts, and trusts our knowledge and expertise as well. She is the kind of person you would love to listen to.',
+  },
+  {
+    name: 'Zaahid Johaar',
+    context: 'Managed Sandy directly at Boldr',
+    date: 'October 26, 2022',
+    datetime: '2022-10-26',
+    quote: 'She has good experience working closely with business stakeholders to realize their goals and create various solutions.',
+  },
+  {
+    name: 'Rameez Fredericks',
+    context: 'Managed Sandy directly',
+    date: 'October 26, 2022',
+    datetime: '2022-10-26',
+    quote: "In all her deliberations she is mindful to consider both the people and the process. Sandy has been invaluable to the team, and beyond that brings peace of mind to anything she's been tasked to complete along with her team.",
+  },
+];
+---
+
+<section aria-labelledby="recommendations-heading" class="max-w-page mx-auto px-6 md:px-10 pt-20 md:pt-24">
+  <div class="hairline fade-up" aria-hidden="true"></div>
+  <div class="mt-6 fade-up">
+    <h2 id="recommendations-heading" class="text-[24px] md:text-[30px] leading-snug tracking-tight text-ink">People I’ve worked with</h2>
+    <p class="mt-3 text-[13px] leading-relaxed text-muted">A few words from LinkedIn recommendations, shared here as excerpts.</p>
+  </div>
+  <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+    {recommendations.map(({ name, context, date, datetime, quote }, index) => (
+      <figure class="border-t border-border pt-6 fade-up" style={`--stagger: ${index % 2}`}>
+        <blockquote class="text-[16px] leading-[1.85] text-ink">
+          <p>“{quote}”</p>
+        </blockquote>
+        <figcaption class="mt-5 text-[12px] leading-[1.8] text-muted">
+          <span class="block text-[14px] font-medium text-ink">{name}</span>
+          <span class="block">{context}</span>
+          <time datetime={datetime}>{date}</time>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

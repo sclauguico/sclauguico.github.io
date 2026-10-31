@@ -1,0 +1,17 @@
+---
+import { projects } from '@/data/projects';
+const selection = [
+  { project: projects.find(p => p.title === 'eCommerce E2E Data Engineering')!, category: '01 / Data engineering', title: 'From raw data to a working data stack.', description: 'Building a reproducible analytics pipeline from ingestion through transformation and orchestration.' },
+  { project: projects.find(p => p.title === 'eCommerce BI Dashboard with Power BI')!, category: '02 / Business intelligence', title: 'Making sense of eCommerce data.', description: 'Turning transactional data into a structured reporting model and interactive business dashboard.' },
+  { project: projects.find(p => p.title === 'AI Agents for eCom Analytics')!, category: '03 / Applied AI', title: 'A different way to explore eCommerce data.', description: 'Connecting AI agents to analytical data through a FastAPI backend and interactive React interface.' },
+];
+---
+<section id="work" class="selected-work max-w-page mx-auto px-6 md:px-10">
+  <div class="editorial-heading fade-up"><div><p class="mono-label">A few things I’ve built</p><h2>Selected work<span>.</span></h2></div><a class="quiet-link" href="#collection">Browse all projects ↓</a></div>
+  {selection.map(({project, category, title, description}) => (
+    <a class="featured-story group fade-up" href={project.href} target="_blank" rel="noreferrer">
+      <div class="featured-image"><img src={project.image} alt={project.title} width="1200" height="750" loading="lazy" decoding="async" /></div>
+      <div class="featured-copy"><p class="mono-label">{category}</p><h3>{title}</h3><p>{description}</p><span class="featured-tools">{project.stack.join(' / ')}</span><span class="quiet-link">Explore project ↗</span></div>
+    </a>
+  ))}
+</section>

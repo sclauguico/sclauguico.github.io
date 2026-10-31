@@ -92,7 +92,7 @@ export const projects: Project[] = [
     stack: ['LangGraph', 'FastAPI', 'React'],
   },
   {
-    title: 'Lead Intake — Validate, Score, Store & Route',
+    title: 'Lead Intake: Validate, Score, Store & Route',
     // No repo: the artefact is an n8n workflow, so the demo recording is
     // the thing worth linking to.
     href: 'https://screenrec.com/share/wTVnBKL0DM',

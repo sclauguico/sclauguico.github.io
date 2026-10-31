@@ -1,0 +1,60 @@
+---
+import Personal from '@/layouts/Personal.astro';
+import PersonalNote from '@/components/PersonalNote.astro';
+import { getNotes, conversations } from '@/data/personal';
+const notes = await getNotes();
+---
+<Personal>
+  <section class="personal-hero" aria-labelledby="personal-heading">
+    <div data-personal-reveal>
+      <p class="personal-eyebrow">More than the job title</p>
+      <h1 id="personal-heading">There’s a little<br /><em>more to me.</em></h1>
+      <p class="personal-intro"><span class="personal-intro-first">Chasing unfamiliar places, yet craving familiar comforts.</span><br />Seeing how far I’ve come, while still figuring things out.<br />And a few existential thoughts in between.</p>
+      <p class="personal-hand personal-welcome">You took the detour. Hello again!</p>
+    </div>
+    <figure class="personal-portrait" data-personal-reveal>
+      <img src="/img/sandy-plaza-clean.png" alt="Sandy in a green outfit, smiling beside a stone pillar in a sunlit plaza in Segovia" width="941" height="1672" decoding="async" fetchpriority="high" />
+      <figcaption class="personal-hand">Sandy, outside the job description.</figcaption>
+    </figure>
+  </section>
+
+  <section id="notes" class="personal-section" aria-labelledby="pieces-heading">
+    <div class="personal-section-heading" data-personal-reveal>
+      <div><p class="personal-eyebrow">From the notebook</p><h2 id="pieces-heading">A few pieces, for now.</h2></div>
+    </div>
+    <div class="personal-note-grid">{notes.map(note => <PersonalNote note={note} />)}</div>
+  </section>
+
+  <section class="personal-section personal-about" aria-labelledby="about-personal-heading">
+    <div data-personal-reveal><p class="personal-eyebrow">Some things can both be true</p><h2 id="about-personal-heading">Ambitious.<br />Sentimental.<br />An expert at some.<br />Beginner at many.</h2></div>
+    <div data-personal-reveal>
+      <p>I'm an engineer, a former researcher and educator, and someone who's always curious about something. I have a habit of wanting to learn too many things at once, most of which have absolutely nothing to do with my work. But that's just how I've always been.</p>
+      <p>In 2026, I packed up my life in the Philippines and moved to Spain. It's something I really wanted, but that doesn't mean I don't miss home. Some days I'm excited about everything ahead of me, and other days, it's the little things back home that get to me.</p>
+      <p>I'm proud of how far I've come, but I also know I didn't get here on hard work alone. A lot of it was taking chances, figuring things out as I went, having the right people around me, and sometimes just being lucky. I still have so much I want to do, things I haven't figured out, and plans I've started more than once. And I think that's okay.</p>
+    </div>
+  </section>
+
+  <section class="personal-bridge" aria-labelledby="engineering-heading" data-personal-reveal>
+    <p class="personal-eyebrow">Also part of me</p>
+    <h2 id="engineering-heading">The other side of the screen.</h2>
+    <p>Most of my time goes into building data and AI systems. The rest goes into documenting the journey, mostly as tutorials and talks like these, in the hope it makes the path a little easier for people just starting out.</p>
+    <div class="personal-conversations">
+      <h3>Tutorials and talks</h3>
+      <ul class="personal-video-list">{conversations.map(({ title, context, href }) => {
+        const videoId = new URL(href).searchParams.get('v');
+        return <li>
+          <a href={href} target="_blank" rel="noreferrer" class="personal-video-link">
+            {videoId && <div class="personal-video-thumbnail">
+              <img src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`} alt="" width="480" height="360" loading="lazy" decoding="async" />
+              <span class="personal-video-play" aria-hidden="true">▶</span>
+            </div>}
+            <span class="personal-video-title">{title} ↗</span>
+            <span class="personal-video-context">{context}</span>
+          </a>
+        </li>;
+      })}</ul>
+    </div>
+    <p>The projects themselves live over on the engineering side.</p>
+    <a href="/#work" class="personal-link">See what I build ↗</a>
+  </section>
+</Personal>

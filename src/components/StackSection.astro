@@ -1,19 +1,15 @@
 ---
 import { stack } from '@/data/projects';
 import SectionHeader from './SectionHeader.astro';
-import Scribble from './Scribble.astro';
 ---
 
 <section id="stack" class="relative">
   <SectionHeader
     index="01"
-    label="Toolchain"
-    title="Tools I've built with (not a wishlist 😉)."
+    label="Tech Stack"
+    title="The tools behind the work."
     kicker="Stack."
   >
-    <Scribble slot="note" class="mt-10" note="idempotent, please" tilt={-2.5}>
-      f(f(x)) = f(x)
-    </Scribble>
   </SectionHeader>
 
   {/* Rows on the spine, not boxes: group name in the narrow column, the

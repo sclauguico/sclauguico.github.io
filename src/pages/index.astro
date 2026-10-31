@@ -1,19 +1,23 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Hero from '@/components/Hero.astro';
+import Capabilities from '@/components/Capabilities.astro';
 import StackSection from '@/components/StackSection.astro';
 import ProjectsSection from '@/components/ProjectsSection.astro';
 import About from '@/components/About.astro';
+import Recommendations from '@/components/Recommendations.astro';
 import Contact from '@/components/Contact.astro';
-import Scribble from '@/components/Scribble.astro';
-import WorkFigure from '@/components/WorkFigure.astro';
+import GitHubActivity from '@/components/GitHubActivity.astro';
+import FeaturedWork from '@/components/FeaturedWork.astro';
 ---
 
 <Base>
   <Hero />
-  <StackSection />
-
-  <WorkFigure />
+  <Capabilities />
+  <FeaturedWork />
+  <About />
+  <Recommendations />
+  <GitHubActivity />
 
   <ProjectsSection
     id="de"
@@ -24,9 +28,6 @@ import WorkFigure from '@/components/WorkFigure.astro';
     discipline="DE"
     space="tight"
   >
-    <Scribble slot="note" class="mt-10" note="Little's Law" tilt={2}>
-      L = λW
-    </Scribble>
   </ProjectsSection>
 
   <ProjectsSection
@@ -38,9 +39,6 @@ import WorkFigure from '@/components/WorkFigure.astro';
     discipline="DS"
     space="loose"
   >
-    <Scribble slot="note" class="mt-10" note="still the whole game" tilt={-2}>
-      P(A|B) = P(B|A)·P(A) / P(B)
-    </Scribble>
   </ProjectsSection>
 
   <ProjectsSection
@@ -52,9 +50,6 @@ import WorkFigure from '@/components/WorkFigure.astro';
     discipline="ML"
     space="normal"
   >
-    <Scribble slot="note" class="mt-10" note="bias–variance" tilt={1.5}>
-      E[(y − f̂)<sup>2</sup>] = Bias<sup>2</sup> + Var + σ<sup>2</sup>
-    </Scribble>
   </ProjectsSection>
 
   <ProjectsSection
@@ -66,11 +61,8 @@ import WorkFigure from '@/components/WorkFigure.astro';
     discipline="AI"
     space="tight"
   >
-    <Scribble slot="note" class="mt-10" note="scaled dot-product attention" tilt={-2}>
-      softmax(QK<sup>T</sup> / √d<sub>k</sub>) V
-    </Scribble>
   </ProjectsSection>
 
-  <About />
+  <StackSection />
   <Contact />
 </Base>

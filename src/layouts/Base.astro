@@ -13,6 +13,7 @@ const {
   title = 'Sandy Lauguico · Data & AI Engineer',
   description = 'Sandy Lauguico is a Data & AI Engineer building production pipelines, agents, and analytics systems.',
 } = Astro.props;
+const homePrefix = Astro.url.pathname === "/" ? "" : "/";
 ---
 
 <!doctype html>
@@ -21,8 +22,8 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/jpeg" href="/img/sandy-icon.jpg" />
-    <link rel="apple-touch-icon" href="/img/sandy-icon.jpg" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+    <link rel="apple-touch-icon" href="/img/sandy-icon.webp" />
     <meta name="color-scheme" content="light dark" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,7 +37,8 @@ const {
 
     <script is:inline>
       (function () {
-        const stored = localStorage.getItem('theme');
+        let stored;
+        try { stored = localStorage.getItem('theme'); } catch {}
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = stored || (prefersDark ? 'dark' : 'light');
         if (theme === 'dark') document.documentElement.classList.add('dark');
@@ -46,8 +48,6 @@ const {
   </head>
   <body class="relative">
     <a href="#top" class="skip-link">Skip to content</a>
-    <div class="grid-paper" aria-hidden="true"></div>
-    <div class="grain" aria-hidden="true"></div>
 
     <header
       class="sticky top-0 z-40 backdrop-blur-xl bg-bg/70 border-b border-border"
@@ -56,7 +56,7 @@ const {
         class="max-w-page mx-auto px-6 md:px-10 h-16 flex items-center justify-between"
       >
         <a
-          href="#top"
+          href={`${homePrefix}#top`}
           class="mark-group flex items-center gap-2.5 text-[14px] font-medium tracking-[-0.015em] text-ink"
           aria-label="Sandy Lauguico, home"
         >
@@ -68,13 +68,22 @@ const {
           class="hidden md:flex items-center gap-8 text-[13px]"
           aria-label="Primary"
         >
-          <a href="#stack" class="nav-link" data-spy="stack">Stack</a>
-          <a href="#de" class="nav-link" data-spy="work">Work</a>
-          <a href="#about" class="nav-link" data-spy="about">About</a>
-          <a href="#contact" class="nav-link" data-spy="contact">Contact</a>
+          <a href={`${homePrefix}#work`} class="nav-link" data-spy="work">Work</a>
+          <a href={`${homePrefix}#about`} class="nav-link" data-spy="about">About</a>
+          <a href={`${homePrefix}#stack`} class="nav-link" data-spy="stack">Tech Stack</a>
+          <a href={`${homePrefix}#contact`} class="nav-link" data-spy="contact">Contact</a>
         </nav>
 
         <div class="flex items-center gap-2">
+          <details class="mobile-nav md:hidden">
+            <summary aria-label="Open navigation">Menu <span aria-hidden="true">☰</span></summary>
+            <nav aria-label="Mobile navigation">
+              <a href={`${homePrefix}#work`}>Explore work ↗</a>
+              <a href={`${homePrefix}#stack`}>Tech Stack</a>
+              <a href={`${homePrefix}#about`}>About me</a>
+              <a href={`${homePrefix}#contact`}>Contact</a>
+            </nav>
+          </details>
 
           <button
             id="theme-toggle"
@@ -151,6 +160,7 @@ const {
     </footer>
 
     <script>
+      import '@/scripts/themeMotion';
       import { initAnalytics } from '@/scripts/analytics';
       import { mountSectionDwell } from '@/scripts/sectionDwell';
       import { mountSocialTracking } from '@/scripts/socialTrack';
@@ -165,11 +175,13 @@ const {
         btn.addEventListener('click', () => {
           const isDark = document.documentElement.classList.toggle('dark');
           const next = isDark ? 'dark' : 'light';
-          localStorage.setItem('theme', next);
+          try { localStorage.setItem('theme', next); } catch {}
           document.documentElement.dataset.theme = next;
         });
       }
 
+      if ('IntersectionObserver' in window) {
+      document.documentElement.classList.add('motion-ready');
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -182,6 +194,10 @@ const {
         { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
       );
       document.querySelectorAll('.fade-up').forEach((el) => io.observe(el));
+      }
+      document.querySelectorAll('.mobile-nav a').forEach((link) => {
+        link.addEventListener('click', () => link.closest('details').removeAttribute('open'));
+      });
 
       // Nav marks whichever section you're reading. "Work" covers all three
       // discipline sections so it stays lit for the whole portfolio run.
@@ -190,7 +206,7 @@ const {
         if (!links.length) return;
         const groups = {
           stack: ['stack'],
-          work: ['de', 'ds', 'ml', 'ai'],
+          work: ['work', 'collection', 'de', 'ds', 'ml', 'ai'],
           about: ['about'],
           contact: ['contact'],
         };
@@ -198,10 +214,12 @@ const {
         function update() {
           const marker = window.innerHeight * 0.35;
           let active = '';
+          let closest = -Infinity;
           for (const link of links) {
             for (const id of groups[link.dataset.spy] || []) {
               const el = document.getElementById(id);
-              if (el && el.getBoundingClientRect().top <= marker) {
+              if (el && el.getBoundingClientRect().top <= marker && el.getBoundingClientRect().top > closest) {
+                closest = el.getBoundingClientRect().top;
                 active = link.dataset.spy;
               }
             }

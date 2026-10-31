@@ -1,0 +1,96 @@
+<a
+  href="/field-notes/"
+  class="nomad-plane"
+  data-nomad-plane
+  aria-label="Take a little detour: explore Sandy’s Field Notes"
+>
+  <span class="airspace" aria-hidden="true">
+    <span class="flight-trail"></span>
+    <span class="plane">
+      <svg viewBox="0 0 148 92" fill="none" focusable="false">
+        <path class="plane-outline" d="M14 38L132 10L82 80L62 54L53 75L48 49L14 38Z" />
+        <path class="wing-left" d="M14 38L132 10L62 54L48 49L14 38Z" />
+        <path class="wing-fold" d="M48 49L53 75L62 54L132 10L48 49Z" />
+        <path class="wing-right" d="M62 54L132 10L82 80L62 54Z" />
+        <path class="crease" d="M48 49L132 10L62 54M62 54L82 80" />
+      </svg>
+    </span>
+  </span>
+  <span class="plane-hint">take a little detour?</span>
+</a>
+
+<style>
+  .nomad-plane {
+    display: inline-flex; flex-direction: column; align-items: center;
+    width: 120px; flex-shrink: 0; padding: 0 4px 6px;
+    color: rgb(var(--accent)); cursor: pointer; border-radius: 6px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .airspace { display: block; position: relative; width: 112px; height: 46px; perspective: 400px; }
+  .plane {
+    position: absolute; left: 30px; top: 2px; width: 56px; height: 38px;
+    transform-style: preserve-3d;
+    transform: rotateX(22deg) rotateY(-18deg) rotateZ(-12deg);
+    filter: drop-shadow(0 10px 5px rgb(var(--ink) / .16));
+  }
+  .plane svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .plane-outline { fill: #b5b39e; stroke: rgb(var(--accent)); stroke-width: 1.2; stroke-linejoin: round; }
+  .wing-left { fill: #fffdf2; }
+  .wing-fold { fill: #aaa991; }
+  .wing-right { fill: #dedcca; }
+  .crease { stroke: #92947e; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
+  :global(:root:not(.dark)) .plane-outline { fill: #817d64; stroke: #465441; stroke-width: 2; }
+  :global(:root:not(.dark)) .wing-left { fill: #fff9e8; }
+  :global(:root:not(.dark)) .wing-fold { fill: #817d64; }
+  :global(:root:not(.dark)) .wing-right { fill: #b8b397; }
+  :global(:root:not(.dark)) .crease { stroke: #5c624c; stroke-width: 1.5; }
+  :global(:root:not(.dark)) .plane { filter: drop-shadow(0 5px 3px rgb(36 58 45 / .24)); }
+  .flight-trail {
+    position: absolute; left: 12px; top: 17px; width: 25px; height: 15px;
+    border-bottom: 1px dashed rgb(var(--accent) / .45); border-radius: 0 0 0 70%;
+    transform: rotate(-20deg);
+  }
+  .plane-hint { font: italic 14px Georgia, serif; line-height: 1.2; }
+  .nomad-plane:hover .plane-hint,
+  .nomad-plane:focus-visible .plane-hint { text-decoration: underline; text-underline-offset: 4px; }
+  .nomad-plane:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .plane {
+      transition: transform .4s ease, filter .4s ease;
+      animation: plane-swoop 1.1s cubic-bezier(.22, 1, .36, 1) .8s backwards;
+    }
+    .nomad-plane:hover .plane,
+    .nomad-plane:focus-visible .plane {
+      transform: translateY(-5px) rotateX(35deg) rotateY(12deg) rotateZ(-18deg);
+      filter: drop-shadow(0 16px 8px rgb(var(--ink) / .12));
+    }
+  }
+  @keyframes plane-swoop {
+    0% { transform: translate3d(-28px, 14px, -25px) rotateX(40deg) rotateY(-30deg) rotateZ(-30deg); opacity: 0; }
+    45% { transform: translate3d(9px, -6px, 15px) rotateX(15deg) rotateY(15deg) rotateZ(0deg); opacity: 1; }
+    75% { transform: translate3d(-3px, 2px, 0) rotateX(26deg) rotateY(-22deg) rotateZ(-16deg); }
+    100% { transform: rotateX(22deg) rotateY(-18deg) rotateZ(-12deg); opacity: 1; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-nomad-plane]').forEach((link) => {
+    if (link.dataset.planeReady) return;
+    link.dataset.planeReady = 'true';
+    link.addEventListener('click', (event) => {
+      // Let the anchor navigate immediately; animation must never block the detour.
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const plane = link.querySelector<HTMLElement>('.plane');
+      if (!plane || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      try {
+        plane.animate([
+          { transform: 'translate3d(0, 0, 0) rotateX(22deg) rotateY(-18deg) rotateZ(-12deg)', opacity: 1 },
+          { transform: 'translate3d(18px, -8px, 20px) rotateX(35deg) rotateY(10deg) rotateZ(-20deg)', opacity: 1, offset: .35 },
+          { transform: 'translate3d(90px, -45px, -60px) rotateX(45deg) rotateY(25deg) rotateZ(-25deg)', opacity: 0 },
+        ], { duration: 650, easing: 'ease-in' });
+      } catch {
+        // The native Field Notes link works even when animation is unsupported.
+      }
+    });
+  });
+</script>

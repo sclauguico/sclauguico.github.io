@@ -1,0 +1,98 @@
+---
+/**
+ * GitHub contributions for the last year, drawn in the site's palette.
+ *
+ * Fetched once at build time from a public, token-free mirror of GitHub's
+ * contribution calendar, so the graph is as fresh as the last deploy. If the
+ * fetch fails the section still renders, just without the grid.
+ */
+const username = 'sclauguico';
+const profile = `https://github.com/${username}`;
+
+type Day = { date: string; count: number; level: 0 | 1 | 2 | 3 | 4 };
+
+let days: Day[] = [];
+let total: number | null = null;
+try {
+  const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
+  if (res.ok) {
+    const data = await res.json();
+    days = data.contributions ?? [];
+    total = data.total?.lastYear ?? null;
+  }
+} catch {
+  // Offline builds keep the section, minus the grid.
+}
+
+// GitHub's calendar runs in Sunday-first week columns; pad the first week so
+// each day lands in its weekday row.
+const leading = days.length ? new Date(`${days[0].date}T00:00:00Z`).getUTCDay() : 0;
+const cells: (Day | null)[] = [...Array(leading).fill(null), ...days];
+const weeks = Math.ceil(cells.length / 7);
+---
+
+<section id="collection" class="relative">
+  <div class="max-w-page mx-auto px-6 md:px-10 pt-20 md:pt-24">
+    <div class="hairline fade-up" aria-hidden="true"></div>
+
+    <figure class="work-map mt-8 grid grid-cols-12 gap-x-0 md:gap-x-8 gap-y-8">
+      <figcaption class="col-span-12 md:col-span-3 fade-up">
+        <p class="mono-label">On GitHub</p>
+        <h2 class="work-map-title">Still building, most days.</h2>
+        <p class="mt-2 text-[13.5px] leading-relaxed text-muted">
+          {total !== null
+            ? <><span class="text-ink tnum">{total.toLocaleString('en-US')}</span> contributions in the last year. One square per day.</>
+            : <>Commits, experiments, and side projects, mostly in public.</>}
+        </p>
+        <a href={profile} target="_blank" rel="noreferrer" class="mt-4 inline-block text-[13px] text-ink link-underline">
+          github.com/{username} ↗
+        </a>
+      </figcaption>
+
+      {days.length > 0 && (
+        <div class="col-span-12 md:col-span-9 fade-up self-center" style="--stagger: 1;">
+          <div
+            class="contrib-grid"
+            style={`--weeks: ${weeks}`}
+            role="img"
+            aria-label={`GitHub contribution graph: ${total ?? 'many'} contributions in the last year`}
+          >
+            {cells.map((day) =>
+              day
+                ? <span class={`contrib-cell l${day.level}`} title={`${day.count} on ${day.date}`} />
+                : <span class="contrib-cell empty" />,
+            )}
+          </div>
+          <div class="contrib-legend mono-label" aria-hidden="true">
+            <span>Less</span>
+            {[0, 1, 2, 3, 4].map((l) => <span class={`contrib-cell l${l}`} />)}
+            <span>More</span>
+          </div>
+        </div>
+      )}
+    </figure>
+  </div>
+</section>
+
+<style>
+  .contrib-grid {
+    display: grid;
+    grid-template-rows: repeat(7, auto);
+    grid-template-columns: repeat(var(--weeks), minmax(0, 1fr));
+    grid-auto-flow: column;
+    gap: 3px;
+  }
+  .contrib-cell { aspect-ratio: 1; border-radius: 2px; background: rgb(var(--ink) / .07); }
+  .contrib-cell.empty { background: transparent; }
+  .contrib-cell.l1 { background: rgb(var(--accent) / .3); }
+  .contrib-cell.l2 { background: rgb(var(--accent) / .5); }
+  .contrib-cell.l3 { background: rgb(var(--accent) / .75); }
+  .contrib-cell.l4 { background: rgb(var(--accent)); }
+  .contrib-legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 14px; font-size: 9px; }
+  .contrib-legend .contrib-cell { width: 10px; }
+  .contrib-legend span:first-child { margin-right: 4px; }
+  .contrib-legend span:last-child { margin-left: 4px; }
+  @media (max-width: 767px) {
+    .contrib-grid { gap: 2px; }
+  }
+</style>

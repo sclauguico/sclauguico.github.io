@@ -1,0 +1,34 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Personal from '@/layouts/Personal.astro';
+import { getNotes, topics } from '@/data/personal';
+export async function getStaticPaths() {
+  return (await getNotes()).filter(note => note.data.standalone).map(note => ({ params: { id: note.id }, props: { note } }));
+}
+interface Props { note: CollectionEntry<'notes'>; }
+const { note } = Astro.props;
+const { Content } = await render(note);
+const notes = (await getNotes()).filter(entry => entry.data.standalone);
+const next = notes[(notes.findIndex(entry => entry.id === note.id) + 1) % notes.length];
+---
+<Personal title={`${note.data.title} · The Other Side of Sandy`} description={note.data.summary}>
+  <article>
+    <header class="personal-story-header" data-personal-reveal>
+      <a href="/field-notes/#notes" class="personal-link">← Back to Field Notes</a>
+      <p class="personal-eyebrow">{note.data.type === 'note' ? 'A short note' : 'A little story'}</p>
+      <h1>{note.data.title}</h1>
+      <p class="personal-story-summary">{note.data.summary}</p>
+      {note.data.date && <time datetime={note.data.date.toISOString().slice(0, 10)} class="personal-eyebrow">{note.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>}
+      <p class="personal-story-topics">{note.data.tags.map(tag => <span>{topics[tag]}</span>)}</p>
+    </header>
+    {note.data.image && <figure class="personal-story-image"><img src={note.data.image.src} alt={note.data.image.alt} width={note.data.image.width} height={note.data.image.height} decoding="async" /></figure>}
+    <div class="personal-reading">
+      <Content />
+      {note.data.source && <p class="personal-source">{note.data.source}</p>}
+    </div>
+  </article>
+  <nav class="personal-story-end" aria-label="Continue exploring">
+    <a href="/field-notes/#notes" class="personal-link">All the pieces</a>
+    {next && next.id !== note.id && <a href={`/field-notes/notes/${next.id}/`} class="personal-link">Another little detour ↗</a>}
+  </nav>
+</Personal>

@@ -1,0 +1,120 @@
+/* Companion-site styles are scoped to its own shell. Portfolio tokens stay intact. */
+.personal-shell { background: #eeece2; color: rgb(var(--ink)); }
+:root.dark .personal-shell { background: rgb(var(--bg)); }
+.personal-shell * { min-width: 0; }
+.personal-shell [hidden] { display: none !important; }
+.personal-shell .personal-wrap { width: min(1140px, 100%); margin-inline: auto; padding-inline: clamp(22px, 5vw, 56px); }
+.personal-shell .personal-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 24px; padding-bottom: 24px; border-bottom: 1px solid rgb(var(--border)); }
+.personal-shell .personal-brand { display: flex; flex-direction: column; line-height: 1.2; font-size: 13px; }
+.personal-shell .personal-hand { font-family: Caveat, cursive; font-weight: 500; }
+.personal-shell .personal-brand .personal-hand { font-size: 32px; color: rgb(var(--rose)); }
+.personal-shell .personal-navigation { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; font-size: 13px; }
+.personal-shell .personal-navigation a[aria-current] { text-decoration: underline; text-decoration-color: rgb(var(--rose)); text-underline-offset: 6px; }
+.personal-shell a:hover { color: rgb(var(--accent)); }
+.personal-shell a:focus-visible, .personal-shell button:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 5px; }
+.personal-shell .personal-work-link { color: rgb(var(--muted)); }
+.personal-shell .personal-theme { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid rgb(var(--border)); border-radius: 50%; cursor: pointer; }
+.personal-shell .personal-theme svg { width: 18px; height: 18px; }
+.personal-shell .personal-sun { display: none; }
+:root.dark .personal-shell .personal-sun { display: block; }
+:root.dark .personal-shell .personal-moon { display: none; }
+.personal-shell .personal-eyebrow { font: 10px/1.7 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: .09em; color: rgb(var(--muted)); }
+.personal-shell .personal-hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 7%; align-items: center; padding-block: 64px 76px; }
+.personal-shell h1 { font-weight: 400; font-size: clamp(45px, 6.2vw, 76px); line-height: 1.08; letter-spacing: -.055em; }
+.personal-shell h1 em { font-family: Georgia, serif; color: rgb(var(--rose)); font-weight: 400; }
+.personal-shell .personal-hero h1 { margin-block: 18px 24px; }
+.personal-shell .personal-intro { font-size: 17px; line-height: 1.85; max-width: 38ch; color: rgb(var(--muted)); }
+@media (min-width: 1100px) {
+  .personal-shell .personal-intro-first { white-space: nowrap; }
+}
+.personal-shell .personal-welcome { margin-top: 24px; font-size: 26px; color: rgb(var(--accent)); }
+.personal-shell .personal-portrait { width: 100%; max-width: 276px; justify-self: end; padding: 12px 12px 18px; background: #e2e7d6; border: 1px solid #c4ccb5; transform: rotate(2deg); box-shadow: 5px 7px 0 rgb(var(--ink) / .035); }
+:root.dark .personal-shell .personal-portrait { background: rgb(var(--sage)); border-color: rgb(var(--border)); }
+.personal-shell .personal-portrait img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 65% 35%; display: block; }
+.personal-shell .personal-portrait img[src$="sandy-plaza-clean.png"] { aspect-ratio: 4 / 5; object-position: 50% 100%; }
+.personal-shell .personal-portrait figcaption { font-size: 22px; margin-top: 12px; color: rgb(var(--ink)); }
+.personal-shell .personal-section { padding-block: 40px 64px; border-top: 1px solid rgb(var(--border)); }
+.personal-shell .personal-section-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 18px; margin-bottom: 28px; }
+.personal-shell h2 { font: 400 clamp(26px, 3vw, 34px)/1.25 Georgia, serif; letter-spacing: -.03em; }
+.personal-shell .personal-link { font-size: 13px; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: rgb(var(--border)); }
+.personal-shell .personal-note-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: start; }
+.personal-shell .personal-note { background: rgb(var(--surface)); border: 1px solid rgb(var(--border)); border-radius: 2px; overflow-wrap: anywhere; }
+.personal-shell .personal-note-copy { padding: 24px; }
+.personal-shell .personal-note h3 { font: 400 25px/1.27 Georgia, serif; letter-spacing: -.025em; margin: 16px 0; }
+.personal-shell .personal-note h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.personal-shell .personal-note-summary { font-size: 14px; line-height: 1.8; color: rgb(var(--muted)); }
+.personal-shell .personal-note-bottom { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-top: 28px; font-size: 11px; color: rgb(var(--muted)); }
+.personal-shell .personal-note-bottom a { margin-left: auto; text-decoration: underline; text-underline-offset: 4px; }
+.personal-shell .personal-note-photo { display: block; overflow: hidden; }
+.personal-shell .personal-note-photo img { display: block; width: 100%; height: 230px; object-fit: cover; object-position: 50% 68%; }
+.personal-shell .personal-note-photo img[src$="sandy-salamanca.jpeg"] { height: auto; aspect-ratio: 1; object-position: 65% 35%; }
+.personal-shell .personal-note--note { background: #e4e8d8; margin-top: 28px; }
+:root.dark .personal-shell .personal-note--note { background: rgb(var(--sage)); }
+.personal-shell .personal-note--note h3 { font-family: Caveat, cursive; font-size: 34px; }
+.personal-shell .personal-note--note .personal-note-summary { font-size: 17px; color: rgb(var(--ink)); }
+.personal-shell .personal-about { display: grid; grid-template-columns: 1fr 1.6fr; gap: 10%; }
+.personal-shell .personal-about h2 { margin-top: 12px; }
+.personal-shell .personal-about p:not(.personal-eyebrow) { font-size: 16px; line-height: 1.85; color: rgb(var(--muted)); }
+.personal-shell .personal-about p + p { margin-top: 18px; }
+.personal-shell .personal-interests { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 24px; font: 12px/1.7 'JetBrains Mono', monospace; color: rgb(var(--accent)); }
+.personal-shell .personal-bridge { padding: 30px; border: 1px solid rgb(var(--border)); background: rgb(var(--surface)); }
+.personal-shell .personal-bridge h2 { margin: 10px 0 14px; }
+.personal-shell .personal-bridge > p { font-size: 15px; line-height: 1.8; max-width: 60ch; color: rgb(var(--muted)); }
+.personal-shell .personal-bridge > a { display: inline-block; margin-top: 18px; }
+.personal-shell .personal-conversations { margin-top: 24px; border-top: 1px solid rgb(var(--border)); padding-top: 18px; }
+.personal-shell .personal-conversations h3 { font-size: 18px; padding-block: 6px; }
+.personal-shell .personal-conversations + p { margin-top: 24px; padding-top: 18px; border-top: 1px solid rgb(var(--border)); }
+.personal-shell .personal-video-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 22px; }
+.personal-shell .personal-video-list li { border-top: 1px solid rgb(var(--border)); padding-top: 16px; }
+.personal-shell .personal-video-link { display: block; }
+.personal-shell .personal-video-thumbnail { position: relative; overflow: hidden; margin-bottom: 14px; background: rgb(var(--sage)); }
+.personal-shell .personal-video-thumbnail img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.personal-shell .personal-video-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: #fff; background: rgb(0 0 0 / .7); font-size: 16px; }
+.personal-shell .personal-video-title { display: block; font-size: 15px; line-height: 1.6; }
+.personal-shell .personal-video-link:hover .personal-video-title { text-decoration: underline; text-underline-offset: 4px; }
+.personal-shell .personal-video-context { display: block; margin-top: 6px; font-size: 12px; line-height: 1.6; color: rgb(var(--muted)); }
+.personal-shell .personal-footer { padding-top: 48px; padding-bottom: 28px; margin-top: 56px; border-top: 1px solid rgb(var(--border)); }
+.personal-shell .personal-footer > p { font-size: 30px; color: rgb(var(--rose)); }
+.personal-shell .personal-footer > div { display: flex; flex-wrap: wrap; gap: 14px 26px; font-size: 11px; color: rgb(var(--muted)); margin-top: 24px; }
+.personal-shell .personal-footer > div span { margin-right: auto; }
+.personal-shell .personal-page-heading { padding-block: 60px 36px; }
+.personal-shell .personal-page-heading h1 { margin: 18px 0; }
+.personal-shell .personal-page-heading > p:not(.personal-eyebrow) { max-width: 46ch; font-size: 16px; line-height: 1.8; color: rgb(var(--muted)); }
+.personal-shell .personal-results { font-size: 12px; color: rgb(var(--muted)); margin-bottom: 24px; }
+.personal-shell .personal-story-header { max-width: 780px; padding-block: 48px 32px; }
+.personal-shell .personal-story-header h1 { font-size: clamp(38px, 5.4vw, 64px); margin-block: 24px; line-height: 1.14; }
+.personal-shell .personal-story-header .personal-eyebrow { margin-top: 28px; }
+.personal-shell .personal-story-summary { font-size: 18px; line-height: 1.8; color: rgb(var(--muted)); max-width: 52ch; }
+.personal-shell .personal-reading { max-width: 650px; margin-inline: auto; font-size: 17px; line-height: 1.95; overflow-wrap: anywhere; }
+.personal-shell .personal-reading p + p { margin-top: 22px; }
+.personal-shell .personal-reading blockquote { border-left: 2px solid rgb(var(--rose)); padding-left: 24px; margin-bottom: 28px; font: italic 25px/1.6 Georgia, serif; }
+.personal-shell .personal-story-image { max-width: 330px; margin: 0 auto 36px; }
+.personal-shell .personal-story-image img { width: 100%; height: auto; border: 10px solid rgb(var(--sage)); }
+.personal-shell .personal-story-image img[src$="sandy-salamanca.jpeg"] { aspect-ratio: 1; object-fit: cover; object-position: 65% 35%; }
+.personal-shell .personal-source { margin-top: 36px; padding-top: 16px; border-top: 1px solid rgb(var(--border)); font-size: 12px; line-height: 1.8; color: rgb(var(--muted)); }
+.personal-shell .personal-story-end { max-width: 650px; margin: 40px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+.personal-shell .personal-story-topics { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 22px; }
+.personal-shell .personal-story-topics span { font-size: 12px; color: rgb(var(--muted)); }
+@media (prefers-reduced-motion: no-preference) {
+  .personal-shell.personal-motion [data-personal-reveal] { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1); }
+  .personal-shell.personal-motion [data-personal-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  .personal-shell .personal-note { transition: box-shadow .2s ease; }
+  .personal-shell .personal-note:focus-within, .personal-shell .personal-note:hover { box-shadow: 0 6px 18px rgb(var(--ink) / .07); }
+}
+@media (max-width: 900px) {
+  .personal-shell .personal-navigation { gap: 16px; }
+  .personal-shell .personal-note-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .personal-shell .personal-note--note { margin-top: 0; }
+}
+@media (max-width: 600px) {
+  .personal-shell .personal-header { align-items: flex-start; flex-wrap: wrap; gap: 18px; }
+  .personal-shell .personal-navigation { width: 100%; gap: 18px; font-size: 12px; }
+  .personal-shell .personal-theme { margin-left: auto; }
+  .personal-shell .personal-hero { grid-template-columns: 1fr; padding-block: 40px 48px; gap: 36px; }
+  .personal-shell .personal-portrait { justify-self: center; max-width: 240px; }
+  .personal-shell .personal-note-grid, .personal-shell .personal-about { grid-template-columns: 1fr; gap: 24px; }
+  .personal-shell .personal-video-list { grid-template-columns: 1fr; }
+  .personal-shell .personal-section { padding-block: 30px 42px; }
+  .personal-shell .personal-bridge { padding: 22px; }
+  .personal-shell .personal-page-heading { padding-top: 40px; }
+}

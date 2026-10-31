@@ -1,0 +1,51 @@
+---
+import '@/styles/global.css';
+import '@/styles/personal.css';
+interface Props { title?: string; description?: string; }
+const { title = 'The Other Side of Sandy', description = 'Personal stories, small discoveries, and unfinished adventures from Sandy Lauguico. A Filipina in Salamanca, still curious and still figuring things out.' } = Astro.props;
+const isJournal = Astro.url.pathname.includes('/notes/');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script is:inline>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('theme'); } catch {}
+        const dark = theme ? theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body class="personal-shell">
+    <a href="#personal-main" class="skip-link">Skip to content</a>
+    <header class="personal-header personal-wrap">
+      <a href="/field-notes/" class="personal-brand" aria-label="The Other Side of Sandy, home"><span>The other side</span><span class="personal-hand">of Sandy.</span></a>
+      <nav aria-label="Personal site navigation" class="personal-navigation">
+        <a href="/field-notes/" aria-current={!isJournal ? 'page' : undefined}>Hello</a>
+        <a href="/field-notes/#notes" aria-current={isJournal ? 'page' : undefined}>Field Notes</a>
+        <a href="/" class="personal-work-link">The engineering side <span aria-hidden="true">↗</span></a>
+        <button class="personal-theme" type="button" data-personal-theme aria-label="Switch color theme">
+          <svg class="personal-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z" /></svg>
+          <svg class="personal-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button>
+      </nav>
+    </header>
+    <main id="personal-main" class="personal-wrap"><slot /></main>
+    <footer class="personal-footer personal-wrap">
+      <p class="personal-hand">a little curiosity goes a long way.</p>
+      <div><span>© {new Date().getFullYear()} Sandy Lauguico</span><a href="/">The engineering side ↗</a><a href="/privacy/">Privacy</a></div>
+    </footer>
+    <script>import '@/scripts/personal';</script>
+  </body>
+</html>

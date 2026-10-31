@@ -6,17 +6,15 @@ interface Props {
   label: string;
   title: string;
   kicker?: string;
-  /** Vertical air above the section. Varied by hand per section so the
-      page breathes unevenly, the way a designed page does — identical
-      spacing six times over is what makes a layout feel generated. */
+  /** Section spacing keeps groups distinct without a long empty scroll. */
   space?: 'tight' | 'normal' | 'loose';
 }
 const { index, label, title, kicker, space = 'normal' } = Astro.props;
 
 const spacing = {
   tight: 'pt-16 md:pt-20',
-  normal: 'pt-24 md:pt-32',
-  loose: 'pt-32 md:pt-48',
+  normal: 'pt-20 md:pt-24',
+  loose: 'pt-20 md:pt-28',
 }[space];
 ---
 

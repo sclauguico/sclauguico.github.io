@@ -2,7 +2,7 @@
 // can't import from the Astro app. Keep these in sync with it, and with
 // ALLOWED_ORIGINS in wrangler.toml.
 
-export const DOMAIN = 'sclauguico.github.io';
+export const DOMAIN = 'sandylauguico.com';
 export const SITE_URL = `https://${DOMAIN}`;
 
 // Not derived from DOMAIN: github.io can't host a mailbox.

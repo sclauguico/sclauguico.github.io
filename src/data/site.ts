@@ -6,7 +6,7 @@
 //   - worker/wrangler.toml  (ALLOWED_ORIGINS, and the custom-domain route)
 // The worker mirrors these values in worker/src/config.ts.
 
-export const DOMAIN = 'sclauguico.github.io';
+export const DOMAIN = 'sandylauguico.com';
 export const SITE_URL = `https://${DOMAIN}`;
 
 // Deliberately NOT derived from DOMAIN: github.io can't host a mailbox,

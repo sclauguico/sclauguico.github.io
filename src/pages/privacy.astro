@@ -2,7 +2,7 @@
 import Base from '@/layouts/Base.astro';
 import { CONTACT_EMAIL } from '@/data/site';
 
-const lastUpdated = '2026-04-25';
+const lastUpdated = '2026-10-31';
 ---
 
 <Base
@@ -48,6 +48,9 @@ const lastUpdated = '2026-04-25';
               The chat widget on this site runs a small AI twin scoped to my
               work. Conversations are logged so I can see how it's being used,
               fix bad answers, and refuse things it shouldn't respond to.
+              The legal basis for this logging is my legitimate interest in
+              keeping the twin accurate and preventing misuse (GDPR
+              Art. 6(1)(f)).
             </p>
 
             <h3 class="mt-5 text-[15px] font-semibold text-ink">What's logged</h3>
@@ -84,9 +87,11 @@ const lastUpdated = '2026-04-25';
 
             <h3 class="mt-5 text-[15px] font-semibold text-ink">Cross-border transfer</h3>
             <p class="mt-2">
-              I'm based in the Philippines; Cloudflare, OpenRouter, and
-              LangSmith are US-hosted. Your messages leave the Philippines to
-              be processed and stored. If that's not acceptable for what you
+              I'm based in Spain; Cloudflare, OpenRouter, and LangSmith are
+              US-hosted. Your messages leave the EU to be processed and
+              stored. These transfers rely on the providers' EU-US Data
+              Privacy Framework certification or the Standard Contractual
+              Clauses in their data processing terms. If that's not acceptable for what you
               want to ask, please email me instead at
               {' '}<a href={`mailto:${CONTACT_EMAIL}`} class="link-underline text-ink">{CONTACT_EMAIL}</a>.
             </p>
@@ -182,6 +187,11 @@ const lastUpdated = '2026-04-25';
               a portable copy of your data.
             </p>
             <p class="mt-2">
+              You can also lodge a complaint with the Spanish data protection
+              authority, the
+              {' '}<a href="https://www.aepd.es" class="link-underline text-ink">Agencia Española de Protección de Datos (AEPD)</a>.
+            </p>
+            <p class="mt-2">
               For the AI twin: since I don't collect identifiers, the only way
               to match requests is by what you typed and roughly when. Give me
               a phrase or a time window and I can find the trace.
@@ -207,7 +217,7 @@ const lastUpdated = '2026-04-25';
           <div id="contact" class="scroll-mt-20">
             <h2 class="text-[20px] font-semibold text-ink">Contact</h2>
             <p class="mt-2">
-              Sandy Lauguico, Manila, Philippines. Data controller for this
+              Sandy Lauguico, Salamanca, Spain. Data controller for this
               site.
               {' '}<a href={`mailto:${CONTACT_EMAIL}`} class="link-underline text-ink">{CONTACT_EMAIL}</a>.
             </p>

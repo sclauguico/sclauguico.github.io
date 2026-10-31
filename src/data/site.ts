@@ -9,7 +9,5 @@
 export const DOMAIN = 'sandylauguico.com';
 export const SITE_URL = `https://${DOMAIN}`;
 
-// Deliberately NOT derived from DOMAIN: github.io can't host a mailbox,
-// so the contact address has to live somewhere else. If a custom domain
-// is bound later, this can go back to `hello@${DOMAIN}`.
-export const CONTACT_EMAIL = 'sclauguico@gmail.com';
+// Forwarded to Gmail by Cloudflare Email Routing; no mailbox is hosted.
+export const CONTACT_EMAIL = `hello@${DOMAIN}`;

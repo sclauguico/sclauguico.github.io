@@ -5,5 +5,5 @@
 export const DOMAIN = 'sandylauguico.com';
 export const SITE_URL = `https://${DOMAIN}`;
 
-// Not derived from DOMAIN: github.io can't host a mailbox.
-export const CONTACT_EMAIL = 'sclauguico@gmail.com';
+// Forwarded to Gmail by Cloudflare Email Routing; no mailbox is hosted.
+export const CONTACT_EMAIL = `hello@${DOMAIN}`;
